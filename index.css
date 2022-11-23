@@ -1,0 +1,50 @@
+@font-face {
+    font-family: digital;
+    src: url(digital-7.ttf);
+}
+
+body {
+    margin: 0;
+    background: #0C4A6E;
+    color: white;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin: 0 20px;
+}
+
+.score {
+    background: #1c1c1c;
+    width: 100px;
+    height: 60px;
+    font-family: digital;
+    font-size: 50px;
+    padding: 4px 0;
+    color: #F43F5E;
+    border-radius: 5px;
+    margin: 0px;
+}
+
+button {
+    font-family: digital;
+    background: none;
+    color: #BAE6FD;
+    border: 1px solid #BAE6FD;
+    border-radius: 3px;
+}
+
+.functions {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 0 auto;
+}
+/*UTILITIES*/
+
+.green {
+    color: chartreuse;
+}
+
