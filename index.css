@@ -9,11 +9,20 @@ body {
     color: white;
 }
 
+.main-container {
+    width: 50%;
+    margin: 200px auto;
+}
+
 .container {
     display: flex;
     justify-content: space-around;
     text-align: center;
     margin: 0 20px;
+}
+
+.container div {
+    margin: 0 10px;
 }
 
 .score {
