@@ -26,13 +26,15 @@
             </div>
         </div>
         <div class="functions">
-            <div>
-                <button id="reset-btn">Reset</button>
-                <h3 class="green" id="countup">00:00:00</h3>
+            <div class="timer">
+                <label class="green" id="minutes">00</label>
+                <label class="green" id="colon">:</label>
+                <label class="green" id="seconds">00</label>
             </div>
             <div>
-                <button id="start-timer" onclick="upTimer()">Start Timer</button>
-                <button id="stoptimer" onclick="clearInterval(timer)">Stop Timer</button>
+                <button id="start">Start Timer</button>
+                <button id="stop">Stop Timer</button>
+                <button id="reset">Reset</button>
             </div>
         </div>
     </div>
