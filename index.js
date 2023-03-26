@@ -22,7 +22,7 @@ const secondsLabel = document.getElementById("seconds");
 let homeScore = 0;
 let guestScore = 0;
 
-let interval = setInterval(function() {runTimer()}, 1000)
+let interval = ''
 let totalSeconds = 0
 
 
@@ -107,13 +107,18 @@ function pad(val)
 }
 
 function startTime() {
-    interval = setInterval(function() {runTimer()}, 1000)
+    if (interval === '') {
+        interval = setInterval(function() {runTimer()}, 1000)
+        startBtn.disabled = true
+    } 
 }
 
 
 
 function stopTime() {
     clearInterval(interval)
+    startBtn.disabled = false
+    interval = ''
 }
 
 homeOne.addEventListener('click', handleHomePlusOne)
