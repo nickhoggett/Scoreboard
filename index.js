@@ -9,15 +9,22 @@ const guestOne = document.querySelector('#guestOne');
 const guestTwo = document.querySelector('#guestTwo');
 const guestThree = document.querySelector('#guestThree');
 
-const resetBtn = document.querySelector('#reset-btn');
-const startTimeBtn = document.querySelector('#start-timer');
+const resetBtn = document.querySelector('#reset');
+const startBtn = document.querySelector('#start')
 const counter = document.querySelector('#countup');
+const stopBtn = document.querySelector('#stop')
+const timeText = document.querySelector('#time')
+
+const minutesLabel = document.getElementById("minutes");
+const secondsLabel = document.getElementById("seconds");
+
 
 let homeScore = 0;
 let guestScore = 0;
 
-let seconds = 0
-let timer = setInterval(upTimer, 1000);
+let interval = setInterval(function() {runTimer()}, 1000)
+let totalSeconds = 0
+
 
 function handleHomePlusOne () {
     homeScore += 1;
@@ -73,21 +80,40 @@ function handleReset () {
     guestScore = 0;
     homeScoreId.innerHTML = homeScore;
     guestScoreId.innerHTML = guestScore;
-    counter.innerHTML = "00.00.00";
-    seconds = 0;
+    minutesLabel.innerHTML = '00'
+    secondsLabel.innerHTML = '00'
+    totalSeconds = 0;
     handleColor();
+    stopTime()
+}
+
+function runTimer() {
+    ++totalSeconds;
+    secondsLabel.innerHTML = pad(totalSeconds%60);
+    minutesLabel.innerHTML = pad(parseInt(totalSeconds/60));
+}
+
+function pad(val)
+{
+    var valString = val + "";
+    if(valString.length < 2)
+    {
+        return "0" + valString;
+    }
+    else
+    {
+        return valString;
+    }
+}
+
+function startTime() {
+    interval = setInterval(function() {runTimer()}, 1000)
 }
 
 
 
-function upTimer() {
-    ++seconds;
-
-    let hour = Math.floor(seconds / 3600);
-    let minute = Math.floor((seconds - hour * 3600) / 60);
-    let updSecond = seconds - (hour * 3600 + minute * 60);
-
-    document.getElementById("countup").innerHTML = hour + ":" + minute + ":" + updSecond;
+function stopTime() {
+    clearInterval(interval)
 }
 
 homeOne.addEventListener('click', handleHomePlusOne)
@@ -99,4 +125,5 @@ guestTwo.addEventListener('click', handleGuestPlusTwo)
 guestThree.addEventListener('click', handleGuestPlusThree)
 
 resetBtn.addEventListener('click', handleReset);
-startTimeBtn.addEventListener('click', upTimer);
+startBtn.addEventListener('click', startTime);
+stopBtn.addEventListener('click', stopTime)
